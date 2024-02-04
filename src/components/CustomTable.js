@@ -12,6 +12,7 @@ import TableContainer from "@material-ui/core/TableContainer";
 import TableHead from "@material-ui/core/TableHead";
 import TableRow from "@material-ui/core/TableRow";
 import Paper from "@material-ui/core/Paper";
+import { formatIndianRupees } from "../utils";
 
 let theme = createMuiTheme({
   palette: {
@@ -56,10 +57,10 @@ export default function DataTable({ data }) {
                 <TableCell component="th" scope="row">
                   {index + 1}
                 </TableCell>
-                <TableCell>{row.buyTarget}</TableCell>
-                <TableCell>{row.sellTarget}</TableCell>
-                <TableCell>{row.resistance}</TableCell>
-                <TableCell>{row.support}</TableCell>
+                <TableCell>{formatIndianRupees(row.buyTarget)}</TableCell>
+                <TableCell>{formatIndianRupees(row.sellTarget)}</TableCell>
+                <TableCell>{formatIndianRupees(row.resistance)}</TableCell>
+                <TableCell>{formatIndianRupees(row.support)}</TableCell>
               </TableRow>
             ))}
           </TableBody>

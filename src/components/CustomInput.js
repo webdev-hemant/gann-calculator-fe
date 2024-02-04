@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import CustomTable from "./CustomTable";
 import { getGannCalculation } from "../services/allEndpoints";
+import { formatIndianRupees } from "../utils";
 
 export default function MainComponent({ data }) {
   const [currentPrice, setCurrentPrice] = useState("");
@@ -35,14 +36,20 @@ export default function MainComponent({ data }) {
       <button onClick={() => handleApiCall()}>
         {isLoading ? "Loading" : "Submit"}
       </button>
-      {apiData && (
+      {apiData && !isLoading && (
         <>
-          <h3>BuyAbove: {data?.buyAbove}</h3>
-          <h3>SellBelow: {data?.sellBelow}</h3>
+          <div className="buysell">
+            <h3 className="buy">
+              Buy Above: {formatIndianRupees(data?.buyAbove)}
+            </h3>
+            <h3 className="sell">
+              Sell Below: {formatIndianRupees(data?.sellBelow)}
+            </h3>
+          </div>
           <CustomTable data={data} />
         </>
       )}
-      {isLoading && <h1>Loading...</h1>}
+      {isLoading && <h1 className="loader">Loading...</h1>}
     </div>
   );
 }
