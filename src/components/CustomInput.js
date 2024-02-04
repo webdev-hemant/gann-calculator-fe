@@ -3,7 +3,7 @@ import CustomTable from "./CustomTable";
 import { getGannCalculation } from "../services/allEndpoints";
 import { formatIndianRupees } from "../utils";
 
-export default function MainComponent({ data }) {
+export default function MainComponent() {
   const [currentPrice, setCurrentPrice] = useState("");
   const [apiData, setApiData] = useState(null);
   const [isLoading, setLoading] = useState(false);
@@ -40,13 +40,13 @@ export default function MainComponent({ data }) {
         <>
           <div className="buysell">
             <h3 className="buy">
-              Buy Above: {formatIndianRupees(data?.buyAbove)}
+              Buy Above: {formatIndianRupees(apiData?.buyAbove)}
             </h3>
             <h3 className="sell">
-              Sell Below: {formatIndianRupees(data?.sellBelow)}
+              Sell Below: {formatIndianRupees(apiData?.sellBelow)}
             </h3>
           </div>
-          <CustomTable data={data} />
+          <CustomTable data={apiData} />
         </>
       )}
       {isLoading && <h1 className="loader">Loading...</h1>}
