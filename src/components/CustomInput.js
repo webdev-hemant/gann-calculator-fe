@@ -31,7 +31,7 @@ export default function MainComponent({ data }) {
         value={currentPrice}
         onChange={handlePriceChange}
         type="text"
-        placeholder="What's your name?"
+        placeholder="Enter nifty price"
       />
       <button onClick={() => handleApiCall()}>
         {isLoading ? "Loading" : "Submit"}
